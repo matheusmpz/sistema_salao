@@ -1,7 +1,7 @@
 <body class="flex flex-col items-center">
     <header class="w-full text-sky-50 py-4 px-6 md:px-12 flex justify-between items-center bg-white shadow-md">
         <h2 class="text-[#544143] text-2xl md:text-3xl">
-        <a href="../index.php">Salão<span class="font-bold">Leila</span></a>
+        <a href="#">Salão<span class="font-bold">Leila</span></a>
         </h2>
 
         <button id="menu-btn" class="md:hidden text-[#544143] text-3xl focus:outline-none">
