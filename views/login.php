@@ -7,12 +7,13 @@
         
         <article class="flex justify-center items-center bg-[#2f2f2f] py-3 w-[296px] space-x-8 rounded-full text-xl">
             <div class="bg-[#B6685C] w-32 flex py-3 justify-center rounded-full">
-                <a href="#" class="cursos-pointer text-[#FFFAE5]">Login</a>
+                <a href="#" class="cursor-pointer text-[#FFFAE5]">Login</a>
             </div>
             <div>
-            <a href="cadastrar" class="cursos-pointer text-[#FFFAE5]">Cadastro</a>
+                <a href="cadastrar" class="cursor-pointer text-[#FFFAE5]">Cadastro</a>
             </div>
         </article>
+
         <form action="/sistema_salao/auth/login" method="POST" class="flex flex-col space-y-12 w-1/4 min-w-[360px]">
             <div class="flex flex-col space-y-8">
                 <div class="flex flex-col space-y-1">
@@ -27,5 +28,11 @@
             
             <button type="submit" class="bg-[#B6685C] text-[#FFFAE5] py-3 rounded-full text-xl flex justify-center">Login</button>
         </form>
+
+        <a href="/sistema_salao/adminLogin" title="Login do administrador"
+           class="text-[#B6685C] hover:text-[#8a4b43] transition flex items-center space-x-1">
+            <i class="fas fa-lock"></i>
+            <span class="text-sm">Área do Administrador</span>
+        </a>
     </section>
 </body>
