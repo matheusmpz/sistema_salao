@@ -6,7 +6,7 @@
       Preencha os dados para criar um novo agendamento.
     </p>
 
-    <!-- Selecionar Cliente -->
+    <!-- Cliente -->
     <label class="block mb-2 font-medium text-sm">Cliente</label>
     <select
       name="cliente_id"
@@ -15,16 +15,14 @@
     >
       <option value="" disabled selected>Selecione um cliente</option>
       <?php foreach ($clientes as $cliente): ?>
-        <option value="<?= $cliente['id'] ?>">
-          <?= htmlspecialchars($cliente['nome']) ?>
-        </option>
+        <option value="<?= $cliente['id'] ?>"><?= htmlspecialchars($cliente['nome']) ?></option>
       <?php endforeach; ?>
     </select>
 
-    <!-- Data -->
-    <label class="block mb-2 font-medium text-sm">Data</label>
+    <!-- Data e Hora -->
+    <label class="block mb-2 font-medium text-sm">Data e Hora</label>
     <input
-      type="date"
+      type="datetime-local"
       name="data"
       class="w-full px-4 py-2 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-purple-500"
       required
@@ -32,12 +30,16 @@
 
     <!-- Serviço -->
     <label class="block mb-2 font-medium text-sm">Serviço</label>
-    <input
-      type="text"
-      name="servico"
+    <select
+      name="servico_id"
       class="w-full px-4 py-2 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-purple-500"
       required
     >
+      <option value="" disabled selected>Selecione um serviço</option>
+      <?php foreach ($servicos as $servico): ?>
+        <option value="<?= $servico['id'] ?>"><?= htmlspecialchars($servico['nome']) ?></option>
+      <?php endforeach; ?>
+    </select>
 
     <!-- Status -->
     <label class="block mb-2 font-medium text-sm">Status</label>

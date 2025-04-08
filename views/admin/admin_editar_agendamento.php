@@ -6,43 +6,57 @@
       Atualize os dados do agendamento abaixo.
     </p>
 
-    <input type="hidden" name="id" value="<?= htmlspecialchars($_GET['id'] ?? '') ?>">
+    <?php if (!empty($mensagemErro)): ?>
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+        <strong class="font-bold">Erro:</strong>
+        <span class="block sm:inline"><?php echo $mensagemErro; ?></span>
+      </div>
+    <?php endif; ?>
 
-    <label class="block mb-2 font-medium text-sm">Data</label>
+    <!-- Data e Hora -->
+    <label class="block mb-2 font-medium text-sm">Data e Hora</label>
     <input
-      type="date"
+      type="datetime-local"
       name="data"
       value="<?= htmlspecialchars($agendamento['data'] ?? '') ?>"
       class="w-full px-4 py-2 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-purple-500"
+      required
     >
 
+    <!-- Serviço -->
     <label class="block mb-2 font-medium text-sm">Serviço</label>
-    <input
-      type="text"
-      name="servico"
-      value="<?= htmlspecialchars($agendamento['servico'] ?? '') ?>"
+    <select
+      name="servico_id"
       class="w-full px-4 py-2 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-purple-500"
+      required
     >
+      <option value="" disabled>Selecione um serviço</option>
+      <?php foreach ($servicos as $servico): ?>
+        <option value="<?= $servico['id'] ?>" <?= ($servico['id'] == $agendamento['servico_id']) ? 'selected' : '' ?>>
+          <?= htmlspecialchars($servico['nome']) ?>
+        </option>
+      <?php endforeach; ?>
+    </select>
 
+    <!-- Status -->
     <label class="block mb-2 font-medium text-sm">Status</label>
     <select
       name="status"
       class="w-full px-4 py-2 border rounded-lg mb-6 focus:outline-none focus:ring-2 focus:ring-purple-500"
+      required
     >
-      <?php
-        $statusOptions = ['Pendente', 'Confirmado', 'Realizado', 'Cancelado'];
-        foreach ($statusOptions as $status) {
-          $selected = ($agendamento['status'] ?? '') === $status ? 'selected' : '';
-          echo "<option value=\"$status\" $selected>$status</option>";
-        }
-      ?>
+      <option value="Pendente" <?= ($agendamento['status'] == 'Pendente') ? 'selected' : '' ?>>Pendente</option>
+      <option value="Confirmado" <?= ($agendamento['status'] == 'Confirmado') ? 'selected' : '' ?>>Confirmado</option>
+      <option value="Realizado" <?= ($agendamento['status'] == 'Realizado') ? 'selected' : '' ?>>Realizado</option>
+      <option value="Cancelado" <?= ($agendamento['status'] == 'Cancelado') ? 'selected' : '' ?>>Cancelado</option>
     </select>
 
+    <!-- Botão -->
     <button
       type="submit"
       class="w-full bg-gray-900 text-white py-2 rounded-lg font-semibold hover:bg-gray-800 transition"
     >
-      Modificar
+      Salvar Alterações
     </button>
   </form>
 

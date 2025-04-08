@@ -7,11 +7,11 @@
     <nav class="space-x-6">
       <a href="adminDashboard" class="text-sm font-medium text-gray-700 hover:text-purple-600 transition">Dashboard</a>
       <a href="adminAgendamento" class="text-sm font-medium text-gray-700 hover:text-purple-600 transition">Agendamentos</a>
-      <a href="adminServicos" class="text-sm font-medium text-gray-700 hover:text-purple-600 transition">Serviços</a>
+      <a href="adminServico" class="text-sm font-medium text-gray-700 hover:text-purple-600 transition">Serviços</a>
     </nav>
   
     <!-- Botão Sair -->
-    <form action="/logout.php" method="POST">
+    <form action="adminLogin/logout" method="POST">
       <button type="submit" class="text-sm font-medium text-red-600 hover:underline">
         Sair
       </button>
@@ -67,6 +67,9 @@
             <button type="submit" class="bg-blue-500 cursor-pointer text-white px-4 py-2 rounded">Filtrar</button>
             <a href="/sistema_salao/adminAgendamento" class="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400">
                 Limpar Filtros
+            </a>
+            <a href="adminAgendamento/criar" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                Novo Agendamento
             </a>
         </div>
     </form>
