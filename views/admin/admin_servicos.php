@@ -5,9 +5,9 @@
   
     <!-- Navegação Central -->
     <nav class="space-x-6">
-      <a href="/dashboard.php" class="text-sm font-medium text-gray-700 hover:text-purple-600 transition">Dashboard</a>
-      <a href="/agendamentos.php" class="text-sm font-medium text-gray-700 hover:text-purple-600 transition">Agendamentos</a>
-      <a href="/servicos/listar.php" class="text-sm font-medium text-gray-700 hover:text-purple-600 transition">Serviços</a>
+      <a href="adminDashboard" class="text-sm font-medium text-gray-700 hover:text-purple-600 transition">Dashboard</a>
+      <a href="adminAgendamento" class="text-sm font-medium text-gray-700 hover:text-purple-600 transition">Agendamentos</a>
+      <a href="#" class="text-sm font-medium text-gray-700 hover:text-purple-600 transition">Serviços</a>
     </nav>
   
     <!-- Botão Sair -->
