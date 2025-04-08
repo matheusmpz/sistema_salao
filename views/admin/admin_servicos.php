@@ -33,6 +33,7 @@
       <table class="min-w-full border-collapse">
         <thead class="bg-gray-200 text-left text-sm font-semibold text-gray-700">
           <tr>
+            <th class="px-6 py-4">Imagem</th> <!-- Nova coluna para a imagem -->
             <th class="px-6 py-4">Nome</th>
             <th class="px-6 py-4">Preço</th>
             <th class="px-6 py-4">Descrição</th>
@@ -42,9 +43,21 @@
         <tbody class="text-sm text-gray-800 bg-white">
           <?php foreach ($servicos as $servico): ?>
             <tr class="border-t hover:bg-gray-50">
+              <!-- Coluna da Imagem -->
+              <td class="px-6 py-4">
+                <?php if (!empty($servico['imagem'])): ?>
+                  <img src="/<?= htmlspecialchars($servico['imagem']) ?>" alt="Imagem do Serviço" class="w-16 h-16 object-cover rounded">
+                <?php else: ?>
+                  <span class="text-gray-500">Sem imagem</span>
+                <?php endif; ?>
+              </td>
+              <!-- Coluna do Nome -->
               <td class="px-6 py-4"><?= htmlspecialchars($servico['nome']) ?></td>
+              <!-- Coluna do Preço -->
               <td class="px-6 py-4">R$ <?= number_format($servico['preco'], 2, ',', '.') ?></td>
+              <!-- Coluna da Descrição -->
               <td class="px-6 py-4"><?= htmlspecialchars($servico['descricao']) ?></td>
+              <!-- Coluna de Ações -->
               <td class="px-6 py-4 text-center">
                 <div class="flex justify-center gap-4">
                   <!-- Editar -->
@@ -54,15 +67,13 @@
                         d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5M18.5 2.5a2.121 2.121 0 113 3L12 15l-4 1 1-4 9.5-9.5z" />
                     </svg>
                   </a>
-  
                   <!-- Excluir -->
                   <form action="/sistema_salao/adminServico/excluir/<?= $servico['id'] ?>" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este serviço?');">
-                      <button type="submit" title="Excluir" class="text-red-600 hover:text-red-800 transition">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                          </svg>
-                      </button>
-                  </form>
+                    <button type="submit" title="Excluir" class="text-red-600 hover:text-red-800 transition">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
                   </form>
                 </div>
               </td>

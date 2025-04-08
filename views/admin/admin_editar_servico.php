@@ -1,5 +1,5 @@
 <div class="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-  <form action="/sistema_salao/adminServico/editar/<?= $servico['id'] ?>" method="POST" class="w-full max-w-md bg-white p-8 rounded-xl shadow-md">
+  <form action="/sistema_salao/adminServico/editar/<?= $servico['id'] ?>" method="POST" enctype="multipart/form-data" class="w-full max-w-md bg-white p-8 rounded-xl shadow-md">
     <h2 class="text-2xl font-semibold text-center text-gray-900">Editar Serviço</h2>
     <p class="text-sm text-gray-600 text-center mt-2 mb-4">Altere as informações do serviço cadastrado abaixo.</p>
 
@@ -31,6 +31,17 @@
       <label for="descricao" class="block text-sm font-medium text-gray-700 mb-1">Descrição</label>
       <textarea name="descricao" id="descricao" rows="3" required
         class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"><?= htmlspecialchars($servico['descricao']) ?></textarea>
+    </div>
+
+    <div class="mb-6">
+      <label for="imagem" class="block text-sm font-medium text-gray-700 mb-1">Imagem</label>
+      <?php if (!empty($servico['imagem'])): ?>
+        <p class="text-sm text-gray-500 mb-2">Imagem atual:</p>
+        <img src="/<?= htmlspecialchars($servico['imagem']) ?>" alt="Imagem do Serviço" class="w-32 h-32 object-cover rounded mb-4">
+      <?php endif; ?>
+      <input type="file" name="imagem" id="imagem" accept="image/*"
+        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+      <p class="text-sm text-gray-500 mt-2">Selecione uma nova imagem para substituir a atual.</p>
     </div>
 
     <button type="submit"

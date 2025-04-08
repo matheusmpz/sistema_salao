@@ -120,4 +120,18 @@ class agendamentos {
         
         return $cmd->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function verificarConflitoHorario($data) {
+        $dataInicio = date('Y-m-d H:i:s', strtotime($data . ' -30 minutes'));
+        $dataFim = date('Y-m-d H:i:s', strtotime($data . ' +30 minutes'));
+    
+        $sql = "SELECT COUNT(*) as total FROM agendamentos WHERE data_agendamento BETWEEN :dataInicio AND :dataFim";
+        $cmd = $this->con->prepare($sql);
+        $cmd->bindValue(':dataInicio', $dataInicio);
+        $cmd->bindValue(':dataFim', $dataFim);
+        $cmd->execute();
+    
+        $resultado = $cmd->fetch(PDO::FETCH_ASSOC);
+        return $resultado['total'] > 0; // Retorna true se houver conflito
+    }
 }

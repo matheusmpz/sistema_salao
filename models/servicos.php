@@ -32,21 +32,30 @@ class servicos {
         return $array;
     }
 
-    public function adicionarServico($nome, $preco, $descricao) {
-        $sql = "INSERT INTO servicos (nome, preco, descricao) VALUES (:nome, :preco, :descricao)";
+    public function adicionarServico($nome, $preco, $descricao, $imagem) {
+        $sql = "INSERT INTO servicos (nome, preco, descricao, imagem) VALUES (:nome, :preco, :descricao, :imagem)";
         $cmd = $this->con->prepare($sql);
         $cmd->bindValue(':nome', $nome);
         $cmd->bindValue(':preco', $preco);
         $cmd->bindValue(':descricao', $descricao);
+        $cmd->bindValue(':imagem', $imagem);
         $cmd->execute();
     }
 
-    public function editarServico($id, $nome, $preco, $descricao) {
-        $sql = "UPDATE servicos SET nome = :nome, preco = :preco, descricao = :descricao WHERE id = :id";
+    public function editarServico($id, $nome, $preco, $descricao, $imagem = null) {
+        if ($imagem) {
+            $sql = "UPDATE servicos SET nome = :nome, preco = :preco, descricao = :descricao, imagem = :imagem WHERE id = :id";
+        } else {
+            $sql = "UPDATE servicos SET nome = :nome, preco = :preco, descricao = :descricao WHERE id = :id";
+        }
+    
         $cmd = $this->con->prepare($sql);
         $cmd->bindValue(':nome', $nome);
         $cmd->bindValue(':preco', $preco);
         $cmd->bindValue(':descricao', $descricao);
+        if ($imagem) {
+            $cmd->bindValue(':imagem', $imagem);
+        }
         $cmd->bindValue(':id', $id);
         $cmd->execute();
     }

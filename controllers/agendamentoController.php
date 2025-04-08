@@ -1,5 +1,6 @@
 <?php
 require_once 'middlewares/authMiddleware.php';
+date_default_timezone_set('America/Sao_Paulo');
 
 class agendamentoController extends Controller {
     public function __construct() {
@@ -32,29 +33,21 @@ class agendamentoController extends Controller {
                 return;
             }
     
-            if (strtotime($data) <= time()) {
-                $mensagemErro = "A data do agendamento deve ser uma data futura.";
+            if (new DateTime($data) <= new DateTime()) {
+                $mensagemErro = "O horário do agendamento deve ser posterior ao horário atual.";
                 $this->carregarTemplate('agendamento', ['mensagemErro' => $mensagemErro]);
                 return;
             }
     
-            $s = new servicos();
-            $servicos = $s->getServicos();
-            $servicoValido = false;
-            foreach ($servicos as $s) {
-                if ($s['id'] == $servico) {
-                    $servicoValido = true;
-                    break;
-                }
-            }
-    
-            if (!$servicoValido) {
-                $mensagemErro = "Serviço inválido.";
-                $this->carregarTemplate('agendamento', ['mensagemErro' => $mensagemErro]);
-                return;
-            }
-    
+            // Verificar conflitos de horário
             $a = new agendamentos();
+            if ($a->verificarConflitoHorario($data)) {
+                $mensagemErro = "Já existe um agendamento próximo a este horário. Escolha outro horário.";
+                $this->carregarTemplate('agendamento', ['mensagemErro' => $mensagemErro]);
+                return;
+            }
+    
+            // Criar o agendamento
             try {
                 $a->agendar($cliente_id, $servico, $data);
                 header('Location: /sistema_salao/agendamento/historico');

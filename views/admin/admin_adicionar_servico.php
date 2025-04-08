@@ -1,6 +1,6 @@
 <body>
     <div class="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-        <form action="/sistema_salao/adminServico/adicionar" method="POST" class="w-full max-w-md bg-white p-8 rounded-xl shadow-md">
+        <form action="/sistema_salao/adminServico/adicionar" method="POST" enctype="multipart/form-data" class="w-full max-w-md bg-white p-8 rounded-xl shadow-md">
             <h2 class="text-2xl font-semibold text-center text-gray-900">Adicionar Serviço</h2>
             <p class="text-sm text-gray-600 text-center mt-2 mb-4">Preencha os campos abaixo para adicionar um novo serviço.</p>
 
@@ -29,6 +29,12 @@
                 <label for="descricao" class="block text-sm font-medium text-gray-700 mb-1">Descrição</label>
                 <textarea name="descricao" id="descricao" rows="3" required
                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+            </div>
+            
+            <div class="mb-4">
+                <label for="imagem" class="block text-sm font-medium text-gray-700 mb-1">Imagem</label>
+                <input type="file" name="imagem" id="imagem" accept="image/*"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
             </div>
 
             <button type="submit"

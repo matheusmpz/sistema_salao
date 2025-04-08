@@ -90,65 +90,65 @@
           // Verifica se há agendamentos disponíveis
           if (!empty($agendamentos)) {
             foreach ($agendamentos as $agendamento) {
-              $id = $agendamento['id'];
-              $cliente = htmlspecialchars($agendamento['cliente']);
-              $data = !empty($agendamento['data']) ? date('d/m/Y H:i', strtotime($agendamento['data'])) : 'Data não informada';
-              $servico = htmlspecialchars($agendamento['servico']);
-              $status = strtolower(trim($agendamento['status'])); // Normaliza o status para evitar problemas
-            
-              // Estilos de status
-              switch ($status) {
-                case 'pendente':
-                  $bg = 'bg-yellow-100';
-                  $text = 'text-yellow-800';
-                  $label = 'Pendente';
-                  break;
-                case 'confirmado':
-                  $bg = 'bg-blue-100';
-                  $text = 'text-blue-800';
-                  $label = 'Confirmado';
-                  break;
-                case 'realizado':
-                  $bg = 'bg-green-100';
-                  $text = 'text-green-800';
-                  $label = 'Realizado';
-                  break;
-                case 'cancelado':
-                  $bg = 'bg-red-100';
-                  $text = 'text-red-800';
-                  $label = 'Cancelado';
-                  break;
-                default:
-                  $bg = 'bg-gray-100';
-                  $text = 'text-gray-800';
-                  $label = ucfirst($status);
-              }
-            
-              echo "
-              <tr class='border-b hover:bg-gray-50 transition'>
-                <td class='px-6 py-4 font-medium'>$cliente</td>
-                <td class='px-6 py-4'>$data</td>
-                <td class='px-6 py-4'>$servico</td>
-                <td class='px-6 py-4'>
-                  <span class='inline-block px-2 py-1 rounded text-xs font-medium $bg $text'>
-                    $label
-                  </span>
-                </td>
-                <td class='px-6 py-4 text-center'>
-                  <a href='/sistema_salao/adminAgendamento/editar/$id' title='Editar' class='text-blue-600 hover:underline text-sm font-medium'>
-                    Editar
-                  </a>
-                </td>
-              </tr>";
+                $id = $agendamento['id'];
+                $cliente = !empty($agendamento['cliente']) ? htmlspecialchars($agendamento['cliente']) : 'Cliente não informado';
+                $data = !empty($agendamento['data']) ? date('d/m/Y H:i', strtotime($agendamento['data'])) : 'Data não informada';
+                $servico = !empty($agendamento['servico']) ? htmlspecialchars($agendamento['servico']) : 'Serviço não informado';
+                $status = strtolower(trim($agendamento['status'] ?? '')); // Normaliza o status para evitar problemas
+        
+                // Estilos de status
+                switch ($status) {
+                    case 'pendente':
+                        $bg = 'bg-yellow-100';
+                        $text = 'text-yellow-800';
+                        $label = 'Pendente';
+                        break;
+                    case 'confirmado':
+                        $bg = 'bg-blue-100';
+                        $text = 'text-blue-800';
+                        $label = 'Confirmado';
+                        break;
+                    case 'realizado':
+                        $bg = 'bg-green-100';
+                        $text = 'text-green-800';
+                        $label = 'Realizado';
+                        break;
+                    case 'cancelado':
+                        $bg = 'bg-red-100';
+                        $text = 'text-red-800';
+                        $label = 'Cancelado';
+                        break;
+                    default:
+                        $bg = 'bg-gray-100';
+                        $text = 'text-gray-800';
+                        $label = 'Status não informado';
+                }
+        
+                echo "
+                <tr class='border-b hover:bg-gray-50 transition'>
+                    <td class='px-6 py-4 font-medium'>$cliente</td>
+                    <td class='px-6 py-4'>$data</td>
+                    <td class='px-6 py-4'>$servico</td>
+                    <td class='px-6 py-4'>
+                        <span class='inline-block px-2 py-1 rounded text-xs font-medium $bg $text'>
+                            $label
+                        </span>
+                    </td>
+                    <td class='px-6 py-4 text-center'>
+                        <a href='/sistema_salao/adminAgendamento/editar/$id' title='Editar' class='text-blue-600 hover:underline text-sm font-medium'>
+                            Editar
+                        </a>
+                    </td>
+                </tr>";
             }
-          } else {
+        } else {
             echo "
-              <tr>
+            <tr>
                 <td colspan='5' class='px-6 py-4 text-center text-gray-500'>
-                  Nenhum agendamento encontrado.
+                    Nenhum agendamento encontrado.
                 </td>
-              </tr>";
-          }
+            </tr>";
+        }
           ?>
         </tbody>
       </table>

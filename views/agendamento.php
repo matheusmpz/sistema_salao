@@ -19,8 +19,8 @@
                     </select>
                 </div>
                 <div class="mb-4">
-                    <label for="data" class="block text-gray-700">Data</label>
-                    <input type="date" id="data" name="data" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    <label for="data" class="block text-gray-700">Data e Hora</label>
+                    <input type="datetime-local" id="data" name="data" step="1800" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                 </div>
                 <div class="flex justify-end">
                     <button type="submit" class="bg-[#FB7237] text-white px-4 py-2 rounded-lg">Enviar</button>
