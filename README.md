@@ -1,6 +1,6 @@
 # Cabeleleila Leila - Sistema de Agendamentos
 
-Um sistema de agendamentos online para o salão de beleza **Cabeleleila Leila**, permitindo que clientes agendem serviços, editem seus agendamentos e consultem um histórico de atendimentos.
+O Cabeleleila Leila é um sistema de agendamentos online desenvolvido para gerenciar os serviços de um salão de beleza. Ele permite que clientes agendem serviços, editem seus agendamentos e consultem um histórico de atendimentos. Além disso, administradores podem gerenciar serviços e agendamentos diretamente pelo painel administrativo.
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -14,12 +14,18 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 
 ## 🎨 Funcionalidades do Sistema
 
-✅ Cadastro e login de usuários  
-✅ Agendamento de serviços  
-✅ Edição de agendamentos (até 2 dias antes)  
-✅ Histórico de agendamentos com detalhes  
-✅ Sugestão de datas quando há múltiplos agendamentos na mesma semana  
-✅ Validações para garantir regras de negócio  
+- Para Clientes:
+✅ Cadastro e login.
+✅ Agendamento de serviços com validações de horário.
+✅ Edição de agendamentos (até 2 dias antes da data marcada).
+✅ Histórico de agendamentos com detalhes.
+✅ Sugestão de datas alternativas em caso de conflitos de horário.
+
+- Para Administradores:
+✅ Login seguro para acesso ao painel administrativo.
+✅ Gerenciamento de serviços (adicionar, editar e excluir).
+✅ Gerenciamento de agendamentos (criar, editar e filtrar por data, serviço e status).
+✅ Dashboard com resumo de agendamentos do dia. 
 
 ## 📸 Prints das Telas
 
