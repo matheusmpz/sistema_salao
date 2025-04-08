@@ -7,11 +7,11 @@
     <nav class="space-x-6">
       <a href="adminDashboard" class="text-sm font-medium text-gray-700 hover:text-purple-600 transition">Dashboard</a>
       <a href="adminAgendamento" class="text-sm font-medium text-gray-700 hover:text-purple-600 transition">Agendamentos</a>
-      <a href="adminServicos" class="text-sm font-medium text-gray-700 hover:text-purple-600 transition">Serviços</a>
+      <a href="/sistema_salao/adminServico" class="text-sm font-medium text-gray-700 hover:text-purple-600 transition">Serviços</a>
     </nav>
   
     <!-- Botão Sair -->
-    <form action="/logout.php" method="POST">
+    <form action="adminLogin/logout" method="POST">
       <button type="submit" class="text-sm font-medium text-red-600 hover:underline">
         Sair
       </button>

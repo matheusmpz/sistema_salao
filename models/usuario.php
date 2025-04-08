@@ -34,4 +34,11 @@ class Usuario {
 
         return $cmd->execute();
     }
+
+    public function getUsuarios() {
+        $sql = "SELECT id, nome FROM clientes ORDER BY nome ASC";
+        $cmd = $this->con->prepare($sql);
+        $cmd->execute();
+        return $cmd->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
