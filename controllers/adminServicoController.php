@@ -1,6 +1,10 @@
 <?php
 
 class adminServicoController extends Controller {
+    public function __construct() {
+        verificarAdministrador(); // Verifica se o usuário é um administrador
+    }
+    
     public function index() {
         $model = new servicos();
         $servicos = $model->listar();

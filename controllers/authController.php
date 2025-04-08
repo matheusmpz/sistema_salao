@@ -59,7 +59,8 @@ class authController extends Controller {
             $usuario = $u->login($email, $senha);
     
             if ($usuario) {
-                $_SESSION['usuario_id'] = $usuario['id'];
+                session_start();
+                $_SESSION['usuario_id'] = $usuario['id']; // Define a sessão do usuário comum
                 $_SESSION['user_name'] = $usuario['nome']; 
                 header('Location: /sistema_salao/home');
                 exit();

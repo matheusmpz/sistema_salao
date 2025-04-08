@@ -1,6 +1,10 @@
 <?php
+require_once 'middlewares/adminMiddleware.php';
+class adminAgendamentoController extends Controller {
+    public function __construct() {
+        verificarAdministrador(); // Verifica se o usuário é um administrador
+    }
 
-class AdminAgendamentoController extends Controller {
     public function index() {
         $model = new AdminAgendamentos();
 

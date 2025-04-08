@@ -1,5 +1,12 @@
 <?php
+require_once 'middlewares/adminMiddleware.php';
+
 class adminLoginController extends Controller {
+    public function __construct() {
+        // Não é necessário verificar o administrador aqui, pois este é o controller de login
+        parent::__construct(); // Caso o Controller pai tenha lógica no construtor
+    }
+
     public function index() {
         $this->carregarTemplate('admin/admin_login');
     }
@@ -14,7 +21,7 @@ class adminLoginController extends Controller {
 
             if ($admin) {
                 session_start();
-                $_SESSION['admin'] = $admin;
+                $_SESSION['admin'] = $admin; // Define a sessão do administrador
                 header('Location: /sistema_salao/adminDashboard');
                 exit();
             } else {
@@ -32,7 +39,7 @@ class adminLoginController extends Controller {
         }
     
         session_destroy();
-        header('Location: /sistema_salao/admin/admin_login');
+        header('Location: /sistema_salao/adminLogin');
         exit();
     }
 }
