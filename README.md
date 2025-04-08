@@ -33,7 +33,7 @@ Os prints das principais telas estão na pasta **/docs/prints** dentro do projet
 
 ## 🎥 Demonstração
 
-Assista ao vídeo demonstrativo do sistema funcionando: **[https://youtu.be/fYTNg2DcFYg?si=AXrmqWJCMPwJB7qk]**  
+Assista ao vídeo demonstrativo do sistema funcionando: **[https://youtu.be/LekoegqO9JA]**  
 
 ## 🛠 Como Rodar o Projeto
 
