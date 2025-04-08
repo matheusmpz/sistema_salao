@@ -1,22 +1,28 @@
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-  <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-sm">
-    <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">Login do Administrador</h2>
+<body class="bg-white flex items-center justify-center h-screen">
+  <div class="bg-[#f9f9f9] rounded-xl p-10 w-full max-w-md shadow-lg space-y-8">
+    <div class="space-y-2">
+      <h1 class="text-3xl font-bold">Login do Administrador</h1>
+      <p class="text-sm text-gray-500">
+        Acesse o painel administrativo para gerenciar o sistema.
+      </p>
+    </div>
 
-    <form action="/sistema_salao/adminLogin/login" method="POST" class="space-y-4">
-      <div>
-        <label for="email" class="block text-sm font-medium text-gray-700">E-mail</label>
-        <input type="email" name="email" id="email" required
-               class="mt-1 block w-full px-4 py-2 border rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-      </div>
-
-      <div>
-        <label for="senha" class="block text-sm font-medium text-gray-700">Senha</label>
-        <input type="password" name="password" id="password" required
-               class="mt-1 block w-full px-4 py-2 border rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+    <form action="/sistema_salao/adminLogin/login" method="POST" class="space-y-6">
+      <div class="space-y-4">
+        <div class="flex flex-col space-y-1">
+          <label for="email" class="text-sm font-medium">E-mail</label>
+          <input type="email" name="email" id="email" required
+                 class="py-3 px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black">
+        </div>
+        <div class="flex flex-col space-y-1">
+          <label for="password" class="text-sm font-medium">Senha</label>
+          <input type="password" name="password" id="password" required
+                 class="py-3 px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black">
+        </div>
       </div>
 
       <button type="submit"
-              class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-xl font-semibold transition">
+              class="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-900 transition">
         Entrar
       </button>
     </form>

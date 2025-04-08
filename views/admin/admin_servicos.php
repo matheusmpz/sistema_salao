@@ -1,48 +1,62 @@
-<body>
-
-  <!-- Header -->
-  <header class="w-full bg-white shadow-md py-4 px-6 flex items-center justify-between mb-8">
+<body class="bg-white">
+  <!-- Cabeçalho -->
+  <header class="w-full bg-black text-white py-4 px-6 flex items-center justify-between shadow-md">
     <!-- Logo -->
-    <div class="text-xl font-bold text-purple-700">Salão da Leila</div>
+    <h2 class="text-2xl md:text-3xl">
+      <a href="#">Salão<span class="font-bold">Leila</span></a>
+    </h2>
 
-    <!-- Navegação -->
-    <nav class="space-x-6">
-      <a href="adminDashboard" class="text-sm font-medium text-gray-700 hover:text-purple-600 transition">Dashboard</a>
-      <a href="adminAgendamento" class="text-sm font-medium text-gray-700 hover:text-purple-600 transition">Agendamentos</a>
-      <a href="adminServico" class="text-sm font-medium text-gray-700 hover:text-purple-600 transition">Serviços</a>
+    <!-- Menu -->
+    <nav class="hidden md:flex items-center space-x-8">
+      <a href="adminDashboard" class="text-lg font-normal hover:underline">Dashboard</a>
+      <a href="adminAgendamento" class="text-lg font-normal hover:underline">Agendamentos</a>
+      <a href="adminServico" class="text-lg font-normal hover:underline">Serviços</a>
     </nav>
 
     <!-- Botão Sair -->
-    <form action="adminLogin/logout" method="POST">
-      <button type="submit" class="text-sm font-medium text-red-600 hover:underline">
-        Sair
-      </button>
+    <form action="adminLogin/logout" method="POST" class="hidden md:block">
+      <button type="submit" class="text-lg font-normal hover:underline">Sair</button>
     </form>
+
+    <!-- Menu Mobile -->
+    <button id="menu-btn" class="md:hidden text-3xl focus:outline-none">
+      ☰
+    </button>
+    <div id="mobile-menu" class="absolute top-16 left-0 w-full bg-black shadow-md hidden flex-col items-center space-y-8 py-4 text-white md:hidden">
+      <a href="adminDashboard" class="text-lg font-normal hover:underline">Dashboard</a>
+      <a href="adminAgendamento" class="text-lg font-normal hover:underline">Agendamentos</a>
+      <a href="adminServico" class="text-lg font-normal hover:underline">Serviços</a>
+      <form action="adminLogin/logout" method="POST">
+        <button type="submit" class="text-lg font-normal hover:underline">Sair</button>
+      </form>
+    </div>
   </header>
+
+  <!-- Conteúdo -->
   <section class="p-6">
     <!-- Título e Botão -->
-    <section class="flex justify-between items-center mb-6">
-      <h1 class="text-3xl font-bold text-gray-800">Serviços</h1>
-      <a href="adminServico/adicionar" class="bg-purple-600 text-white text-sm px-6 py-2 rounded-md font-semibold hover:bg-purple-500 transition">
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="text-3xl font-bold text-black">Serviços</h1>
+      <a href="adminServico/adicionar" class="bg-green-500 text-white text-sm px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition">
         Novo Serviço
       </a>
-    </section>
-  
+    </div>
+
     <!-- Tabela de Serviços -->
-    <div class="overflow-x-auto rounded-xl shadow">
-      <table class="min-w-full border-collapse">
-        <thead class="bg-gray-200 text-left text-sm font-semibold text-gray-700">
+    <div class="overflow-x-auto rounded-lg shadow-md">
+      <table class="min-w-full bg-white rounded-lg">
+        <thead class="bg-gray-100 text-gray-600 text-left text-sm uppercase">
           <tr>
-            <th class="px-6 py-4">Imagem</th> <!-- Nova coluna para a imagem -->
+            <th class="px-6 py-4">Imagem</th>
             <th class="px-6 py-4">Nome</th>
             <th class="px-6 py-4">Preço</th>
             <th class="px-6 py-4">Descrição</th>
             <th class="px-6 py-4 text-center">Ações</th>
           </tr>
         </thead>
-        <tbody class="text-sm text-gray-800 bg-white">
+        <tbody class="text-gray-800 text-sm">
           <?php foreach ($servicos as $servico): ?>
-            <tr class="border-t hover:bg-gray-50">
+            <tr class="border-b hover:bg-gray-50 transition">
               <!-- Coluna da Imagem -->
               <td class="px-6 py-4">
                 <?php if (!empty($servico['imagem'])): ?>
@@ -52,7 +66,7 @@
                 <?php endif; ?>
               </td>
               <!-- Coluna do Nome -->
-              <td class="px-6 py-4"><?= htmlspecialchars($servico['nome']) ?></td>
+              <td class="px-6 py-4 font-medium"><?= htmlspecialchars($servico['nome']) ?></td>
               <!-- Coluna do Preço -->
               <td class="px-6 py-4">R$ <?= number_format($servico['preco'], 2, ',', '.') ?></td>
               <!-- Coluna da Descrição -->
@@ -82,8 +96,5 @@
         </tbody>
       </table>
     </div>
-
   </section>
-
-
 </body>
